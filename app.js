@@ -12,9 +12,12 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send('Hello again world!'));
+app.get("/", (req, res) => {
+  res.send('Hello again world!')
+});
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));
-app.use("/api/users", users);
-app.use("/api/tweets", tweets);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use("/api/users", users);
+app.use("/api/tweets", tweets);
